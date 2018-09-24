@@ -1,26 +1,62 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button,Container, Row, Col } from 'reactstrap';
+import {  ListGroup } from 'reactstrap';
+import Menuitem from './menuItem.js';
 
 class MenuList extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      items: {
+        restaurant: {
+          menu: []
+        }
+      }
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://demo8827789.mockable.io/menulist")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
   render() {
-    return (
-      <div>
-        <Row>
-          <Col xs="3">
-            <Card>
-              <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-              <CardBody>
-                <CardTitle>Card title</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
-                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                <Button>Button</Button>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-    );
+    const { error, isLoaded, items } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+          <div>
+            {items.restaurant.menu.map( (categories,index) => (
+              <div key={index}>
+                <h3 className="text-left"> {categories.category} </h3>
+                <ListGroup>
+                  {categories.items.map((item,index) => (
+                    <Menuitem item={item} key={index}></Menuitem>
+                  ))}
+                </ListGroup>
+              </div>
+            ))}
+          </div>
+      )};
   }
 }
 
