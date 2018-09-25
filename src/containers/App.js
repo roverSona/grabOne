@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import MenuList from './menuList.js';
-import Summary from './summary.js'
+import logo from '../logo.svg';
+import '../App.css';
+import MenuContainer from './MenuContainer'
+import CartContainer from './CartContainer'
 import { Container, Row, Col } from 'reactstrap';
 
 class App extends Component {
@@ -20,10 +20,10 @@ class App extends Component {
               {/* <cateGoies></MenuList> */}
             </Col>
             <Col sm="6">
-              <MenuList></MenuList>
+              <MenuContainer />
             </Col>
             <Col sm="3">
-              <Summary></Summary>
+              <CartContainer />
             </Col>
           </Row>
         </Container>
@@ -33,3 +33,4 @@ class App extends Component {
 }
 
 export default App;
+

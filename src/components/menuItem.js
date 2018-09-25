@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { ListGroupItem, ListGroupItemHeading, ListGroupItemText, CardBody,
-  CardTitle, Button, Col,Badge,InputGroup, InputGroupAddon } from 'reactstrap';
+import { ListGroupItem, ListGroupItemHeading, ListGroupItemText,Button,Badge } from 'reactstrap';
+import QuantityIncDec from './quantityIncDecre.js';
 
-class Menuitem extends Component {
+class MenuItem extends Component {
 
   constructor(props) {
     super(props);
@@ -17,7 +17,7 @@ class Menuitem extends Component {
   }
 
   render() {
-    const { item } = this.props;
+    const { item} = this.props;
         return (
             <ListGroupItem>
                 
@@ -28,15 +28,11 @@ class Menuitem extends Component {
                 </div>
                 <div className="float-right">
                     <Button outline color="success" >Add</Button>
-                    <br/><br/>
-                    <InputGroup>
-                        <InputGroupAddon addonType="prepend"><Button  color="danger" outline onClick={this.handleChange()}>-</Button></InputGroupAddon>
-                        <input type="text" id="quantity" name="quantity" className="form-control input-number" value="10" min="1" max="100" onChange={this.handleChange()}/>
-                        <InputGroupAddon addonType="append"><Button  color="success" outline onClick={this.handleChange()}>+</Button></InputGroupAddon>
-                    </InputGroup>  
+                    <br/><br/> 
+                    <QuantityIncDec itemId={item.menu_item_id} addQuantity={this.handleChange}></QuantityIncDec>
                 </div>
             </ListGroupItem>
         )};
     }
 
-export default Menuitem;
+export default MenuItem;
