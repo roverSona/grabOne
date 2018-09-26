@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ListGroupItemText,ListGroupItem, ListGroup, Button } from 'reactstrap';
-import QuantityIncDec from './quantityIncDecre.js';
+//import QuantityIncDec from './quantityIncDecre.js';
 
 
 const Cart  = ({ items, total, onCheckoutClicked }) => {

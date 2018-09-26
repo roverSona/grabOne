@@ -3,13 +3,18 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getAllMenu } from '../actions'
 import {getfilterOptions} from '../reducers/filter'
-import Filters from '../components/filter'
+import CategoryFilter from '../components/categoriesFilter'
 
 const FilterContainer = ({ filterOptions, getAllMenu }) => (
-  <Filters
-    categories={filterOptions.categories}
-    rating={filterOptions.rating}
-    onFilterApply={() => getAllMenu()} />
+    <div>
+      <h4> Category</h4>
+      <ul>
+        {filterOptions.categories.map((filter) => (
+          <CategoryFilter item={filter} onFilterApply={() => getAllMenu(filter)} key={filter}/> 
+        ))}
+      </ul>
+    </div>
+    
 )
 
 FilterContainer.propTypes = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ListGroupItem, ListGroupItemHeading, ListGroupItemText,Button,Badge } from 'reactstrap';
-import QuantityIncDec from './quantityIncDecre.js';
+//import QuantityIncDec from './quantityIncDecre.js';
 
 const MenuItem = ({ item, onAddToCartClicked }) => (
     <ListGroupItem>

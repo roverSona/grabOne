@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+
 import { RECEIVE_FILTERS } from '../constants/ActionTypes'
 const intialState = {
 	filterOptions: {
@@ -8,7 +8,6 @@ const intialState = {
 }
 
 const filterOptions = (state = intialState, action) => {
-	console.log(action,state);
   switch (action.type) {
     case RECEIVE_FILTERS:
     state.filterOptions = action.filterOptions;
@@ -19,7 +18,7 @@ const filterOptions = (state = intialState, action) => {
 }
 
 export const getfilterOptions = state => {
-	console.log(state);
+	// console.log(state);
 	return state.filterOptions
 };
 

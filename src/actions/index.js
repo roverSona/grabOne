@@ -52,3 +52,16 @@ export const getAllFilters = () => (dispatch) => {
   })
 }
 
+export const searchMenu = (SearchString) => (dispatch) => {
+  shop.getMenu(menu => {
+    if(SearchString) {
+      SearchString = SearchString.toLowerCase();
+      menu = menu.filter((item) => {
+        return ( item.category.toLowerCase().includes(SearchString) || item.name.toLowerCase().includes(SearchString) || item.description.toLowerCase().includes(SearchString) )
+      });
+      dispatch(receiveMenu(menu))
+    }
+    
+  })
+}
+

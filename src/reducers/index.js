@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import cart, * as fromCart from './cart'
 import menu, * as fromMenu from './menu'
-import filterOptions, * as fromFilters from './filter'
+import filterOptions from './filter'
 
 export default combineReducers({
   cart,
@@ -22,7 +22,7 @@ export const getTotal = state =>
     .toFixed(2)
 
 export const getCartItems = state =>{
-  console.log(getAddedIds(state));
+  // console.log(getAddedIds(state));
   return getAddedIds(state).map(id => ({
     ...getItem(state, id),
     quantity: getQuantity(state, id)
