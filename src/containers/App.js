@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 import logo from '../logo.svg';
 import '../App.css';
 import MenuContainer from './MenuContainer'
 import CartContainer from './CartContainer'
-import { Container, Row, Col } from 'reactstrap';
+import FilterContainer from './FilterContainer'
+
 
 class App extends Component {
   render() {
@@ -17,7 +19,7 @@ class App extends Component {
         <Container>
           <Row>
             <Col sm="3">
-              {/* <cateGoies></MenuList> */}
+              <FilterContainer />
             </Col>
             <Col sm="6">
               <MenuContainer />

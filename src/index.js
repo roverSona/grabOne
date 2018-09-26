@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
-import { getAllMenu } from './actions'
+import { getAllMenu, getAllFilters } from './actions'
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -23,6 +23,7 @@ const store = createStore(
 )
 
 store.dispatch(getAllMenu())
+store.dispatch(getAllFilters())
 
 
 ReactDOM.render(  

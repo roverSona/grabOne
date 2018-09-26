@@ -9,27 +9,20 @@ import {  ListGroup } from 'reactstrap';
 
 const MenuContainer = ({ menu, addToCart }) => (
   <MenuList title="Menu">
-    {menu.map( (categories,index) => (
-      <div key={index}>
-        <h3 className="text-left"> {categories.category} </h3>
         <ListGroup>
           {
-            categories.items.map((item,index) => (
+            menu.map((item,index) => (
               <MenuItem item={item} key={item.menu_item_id} onAddToCartClicked={() => addToCart(item.menu_item_id)}/>
             ))
           }
         </ListGroup>
-      </div>
-    ))}
   </MenuList>
 )
 
 MenuContainer.propTypes = {
   menu: PropTypes.arrayOf(PropTypes.shape({
-    items: PropTypes.arrayOf(PropTypes.shape({
-      menu_item_id:PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
-    })).isRequired,
+    menu_item_id:PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
     
   })).isRequired,

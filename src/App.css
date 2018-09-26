@@ -28,6 +28,9 @@
 .input-number{
   width:50px !important;
 }
+.text-width {
+  width: 114.675px;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

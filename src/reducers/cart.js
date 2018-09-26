@@ -12,10 +12,10 @@ const initialState = {
 const addedIds = (state = initialState.addedIds, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      if (state.indexOf(action.productId) !== -1) {
+      if (state.indexOf(action.itemId) !== -1) {
         return state
       }
-      return [ ...state, action.productId ]
+      return [ ...state, action.itemId ]
     default:
       return state
   }
@@ -24,23 +24,24 @@ const addedIds = (state = initialState.addedIds, action) => {
 const quantityById = (state = initialState.quantityById, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      const { productId } = action
+      const { itemId } = action
       return { ...state,
-        [productId]: (state[productId] || 0) + 1
+        [itemId]: (state[itemId] || 0) + 1
       }
     default:
       return state
   }
 }
 
-export const getQuantity = (state, productId) =>
-  state.quantityById[productId] || 0
+export const getQuantity = (state, itemId) =>
+  state.quantityById[itemId] || 0
 
 export const getAddedIds = state => state.addedIds
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
     case CHECKOUT_REQUEST:
+      alert('Your order will be delivered in x minutes');
       return initialState
     case CHECKOUT_FAILURE:
       return action.cart

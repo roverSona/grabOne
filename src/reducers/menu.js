@@ -18,9 +18,8 @@ const byId = (state = {}, action) => {
     case RECEIVE_MENU:
       return {
         ...state,
-        ...action.menu.reduce((obj, item,i) => {
-          console.log(obj, item)
-          obj[i] = item
+        ...action.menu.reduce((obj, item) => {
+          obj[item.menu_item_id] = item
           return obj
         }, {})
       }
@@ -50,10 +49,10 @@ export default combineReducers({
   visibleIds
 })
 
-export const getItem = (state, id) =>{
-  console.log(state,id)
-  state.byId[id]
-}
+export const getItem = (state, id) => {
+  // console.log(state,id);
+  return state.byId[id]}
 
 export const getVisibleMenu = state =>
   state.visibleIds.map(id => getItem(state, id))
+
